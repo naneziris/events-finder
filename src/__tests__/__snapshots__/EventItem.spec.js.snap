@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EventItem component Should match the snapshot 1`] = `
+<li
+  className="event "
+>
+  <div
+    className="event__container"
+  >
+    <div
+      className="event__media"
+    >
+      <img
+        alt="Cher"
+        src="https://s1.ticketm.net/dam/a/aa1/03bb556a-482a-4c3a-93e0-2b0412ecbaa1_1198501_RETINA_PORTRAIT_16_9.jpg"
+      />
+    </div>
+    <div
+      className="event__body"
+    >
+      <h2
+        className="event__title"
+      >
+        Cher
+      </h2>
+      <h5
+        className="event__date"
+      >
+        Date: 
+        2020-10-06
+      </h5>
+      <button
+        className="event__btn"
+        data-id="G5vzZpkJt1Aen"
+        onClick={[Function]}
+        type="button"
+      >
+        More Info
+      </button>
+    </div>
+  </div>
+</li>
+`;
