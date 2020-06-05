@@ -10,7 +10,7 @@ const EventItem = ({event}) => {
 
     const eventImage = _filter(images, {width: 640, height: 360})[0].url;
     const eventDate = dates.start.localDate;
-    const { segment, genre, subGenre } = classifications[0];
+    const { segment, genre, subGenre } = classifications && classifications[0];
     const hasSegment = Boolean(segment);
     const hasGenre = Boolean(genre);
     const hasSubGenre = Boolean(subGenre);
@@ -35,14 +35,14 @@ const EventItem = ({event}) => {
                         <a href={url} target="_blank" rel="noopener noreferrer" >Click here</a>
                     </div>
                     {hasSegment &&(
-                        <div>
+                        <div data-test="segment">
                             <h4>Event type:</h4>
                             <span>
                                 {segment.name} {hasGenre && genre.name}, {hasSubGenre && subGenre.name}</span>
                         </div>
                     )}
                     {hasPromoterName &&(
-                        <div>
+                        <div data-test="promoter">
                             <h4>Promoter:</h4>
                             <div>{promoter.name}<br />{hasPromoterDesc && promoter.description}</div>
                         </div>

@@ -14,6 +14,13 @@ describe('EventItem component', () => {
         const tree = renderer.create(<EventItem  event={event} />).toJSON();
         expect(tree).toMatchSnapshot();
     })
+    it('Should handle not existing data in footer', () => {
+        const modifiedEvent = {...event, promoter: null, classifications: [{}]}
+        const wrapper = shallow(<EventItem event={modifiedEvent} />)
+        wrapper.find('button').simulate('click');
+        expect(wrapper.find('div[data-test="segment"]').exists()).toBeFalsy();
+        expect(wrapper.find('div[data-test="promoter"]').exists()).toBeFalsy();
+    })
     it('Should show footer when "More info" gets clicked', () => {
         const wrapper = shallow(<EventItem event={event} />);
         expect(wrapper.find('.event__footer').exists()).toBeFalsy();
