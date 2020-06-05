@@ -11,6 +11,11 @@ const EventItem = ({event}) => {
     const eventImage = _filter(images, {width: 640, height: 360})[0].url;
     const eventDate = dates.start.localDate;
     const { segment, genre, subGenre } = classifications[0];
+    const hasSegment = Boolean(segment);
+    const hasGenre = Boolean(genre);
+    const hasSubGenre = Boolean(subGenre);
+    const hasPromoterName = Boolean(promoter) && Boolean(promoter.name);
+    const hasPromoterDesc = Boolean(promoter) && Boolean(promoter.description);
     return (
         <li className={`event ${eventOpenExtraClass}`}>
             <div className="event__container">
@@ -29,14 +34,19 @@ const EventItem = ({event}) => {
                         <h4>Event website</h4>
                         <a href={url} target="_blank" rel="noopener noreferrer" >Click here</a>
                     </div>
-                    <div>
-                        <h4>Event type:</h4>
-                        <span>{segment.name} ({genre.name}, {subGenre.name})</span>
-                    </div>
-                    <div>
-                        <h4>Promoter:</h4>
-                        <div>{promoter.name}<br />{promoter.description}</div>
-                    </div>
+                    {hasSegment &&(
+                        <div>
+                            <h4>Event type:</h4>
+                            <span>
+                                {segment.name} {hasGenre && genre.name}, {hasSubGenre && subGenre.name}</span>
+                        </div>
+                    )}
+                    {hasPromoterName &&(
+                        <div>
+                            <h4>Promoter:</h4>
+                            <div>{promoter.name}<br />{hasPromoterDesc && promoter.description}</div>
+                        </div>
+                    )}
                     <button className="event__btn event__btn--small" type="button" data-id={id} onClick={()=> setShowMore(!showMore)}>{CTAlabel}</button>
 
                 </div>
