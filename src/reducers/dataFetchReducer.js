@@ -1,4 +1,4 @@
-export  const dataFetchReducer = (state, action) => {
+export  const dataFetchReducer = (state = {events: []}, action) => {
     switch (action.type) {
         case 'GET_EVENTS_LOADING':
             return {

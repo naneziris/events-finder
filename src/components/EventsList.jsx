@@ -13,9 +13,9 @@ const EventsList = () => {
     if (localState && localState.events) {
         const { events, page, totalPages, isError, isLoading } = localState;
         const lastPage = page === totalPages;
+        if(isError){ return <div>Something went wrong, Please refresh the page ...</div>}
         return (
             <div>
-                {isError && <div>Something went wrong, Please refresh the page ...</div>}
                 {isLoading ? (
                     <div>Loading ...</div>
                     ) : (
